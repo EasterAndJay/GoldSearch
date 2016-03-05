@@ -1,6 +1,14 @@
 source 'https://rubygems.org'
 
+ruby '2.3.0'
 
+gem 'fuzzily'
+
+gem 'bootstrap-sass', '~> 3.3'
+
+gem 'rails_real_favicon'
+
+gem 'haml-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use sqlite3 as the database for Active Record

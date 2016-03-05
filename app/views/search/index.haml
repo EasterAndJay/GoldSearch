@@ -1,0 +1,16 @@
+- content_for :head do
+  =stylesheet_link_tag "search.scss"
+
+=form_tag root_path, :method => :post do
+  .form-group.text-center
+    .clearfix
+      = label_tag "name", "Please enter course to search for: ", :class => "col-xs-4 lab"
+      .col-xs-8
+        = text_field_tag "name", "", :class => "form-control"
+    = submit_tag "Submit", :class => "btn btn-primary mybtn"
+- if @courses
+  .list-group
+  - @courses.each do |course|
+    %a{:href => "#", :class => "list-group-item class"}
+      %h4{:class => "list-group-item-heading"} #{course.name}
+      %p{:class => "list-group-item-text"} This is a description of the course
