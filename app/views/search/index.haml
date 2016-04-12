@@ -1,16 +1,29 @@
-- content_for :head do
-  =stylesheet_link_tag "search.scss"
+/ - content_for :head do
+/   =stylesheet_link_tag "search.scss"
 
-=form_tag root_path, :method => :post do
+=form_tag root_path, :method => :get, remote: true, :id => "seach_form" do
   .form-group.text-center
-    .clearfix
+    .clearfix.search
       = label_tag "name", "Please enter course to search for: ", :class => "col-xs-4 lab"
       .col-xs-8
-        = text_field_tag "name", "", :class => "form-control"
+        = text_field :name, "", :class => "form-control"
+    .clearfix.reqs
+      = select_tag "course[area]", options_for_select([ ["Area B","b"],["Area C","c"],["Area D","d"],["Area E","e"],["Area F","f"], ["Area G","g"], ["Area H","h"] ])
+
+      Ethnicity
+      = check_box "course", "ethn", {}, true, false
+
+      .checkbox
+        %input{:type => "checkbox", :name => "course[writ]"}Writing
+
+      .checkbox
+        %input{:type => "checkbox", :name => "course[world]"}World Cultures
+
+      .checkbox
+        %input{:type => "checkbox", :name => "course[euro]"}European Traditions
+      .checkbox
+        %input{:type => "checkbox", :name => "course[quant]"}Quantitative Relationships
+
     = submit_tag "Submit", :class => "btn btn-primary mybtn"
-- if @courses
-  .list-group
-  - @courses.each do |course|
-    %a{:href => "#", :class => "list-group-item class"}
-      %h4{:class => "list-group-item-heading"} #{course.name}
-      %p{:class => "list-group-item-text"} This is a description of the course
+.list-group
+

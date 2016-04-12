@@ -15,3 +15,10 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+// $(function() {
+//   $("#search_form input").keyup(function() {
+//     $.get($("#search_form").attr("action"), $("#search_form").serialze(), null, "script");
+//     return false;
+//   });
+// });

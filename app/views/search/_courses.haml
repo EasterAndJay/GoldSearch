@@ -1,0 +1,6 @@
+- @courses.each do |course|
+  %a{:href => "#", :class => "list-group-item class"}
+    %h4{:class => "list-group-item-heading"} #{course.name}
+    %p{:class => "list-group-item-text"} #{course.desc}
+
+= will_paginate @courses

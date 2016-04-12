@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229222222) do
+ActiveRecord::Schema.define(version: 20160307184117) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "courses", force: :cascade do |t|
     t.string   "number"
@@ -21,6 +24,15 @@ ActiveRecord::Schema.define(version: 20160229222222) do
     t.string   "dept"
     t.integer  "year"
     t.string   "quarter"
+    t.string   "area"
+    t.boolean  "ethn"
+    t.boolean  "euro"
+    t.boolean  "quant"
+    t.boolean  "world"
+    t.boolean  "writ"
+    t.string   "desc"
+    t.string   "units"
+    t.string   "grading"
   end
 
   create_table "professors", force: :cascade do |t|
@@ -39,16 +51,5 @@ ActiveRecord::Schema.define(version: 20160229222222) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  create_table "trigrams", force: :cascade do |t|
-    t.string  "trigram",     limit: 3
-    t.integer "score",       limit: 2
-    t.integer "owner_id"
-    t.string  "owner_type"
-    t.string  "fuzzy_field"
-  end
-
-  add_index "trigrams", ["owner_id", "owner_type", "fuzzy_field", "trigram", "score"], name: "index_for_match"
-  add_index "trigrams", ["owner_id", "owner_type"], name: "index_by_owner"
 
 end

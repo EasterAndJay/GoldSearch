@@ -9,14 +9,13 @@ class Course < ActiveRecord::Base
   has_many :sections
   belongs_to :professor
 
-  fuzzily_searchable :name
 
   def name
     "#{self.dept} #{self.number} - #{self.title.titleize}"
   end
 
   def name_changed?
-    dept.changed? || number.changed? || title.changed?
+    dept_changed? || number_changed? || title_changed?
   end
 
   def to_s
